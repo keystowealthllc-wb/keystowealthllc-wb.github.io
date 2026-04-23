@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Wealth Architect Checklist — Free Download</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --teal: #0F6E56;
+    --teal-light: #E1F5EE;
+    --teal-mid: #1D9E75;
+    --teal-dark: #085041;
+    --purple: #3C3489;
+    --purple-light: #EEEDFE;
+    --amber: #633806;
+    --amber-light: #FAEEDA;
+    --dark: #111;
+    --mid: #444;
+    --muted: #888;
+    --bg: #FAFAF8;
+    --white: #fff;
+    --border: rgba(0,0,0,0.08);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--dark);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(250,250,248,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 56px;
+  }
+  .nav-brand { font-family: 'DM Serif Display', serif; font-size: 1.1rem; color: var(--teal); letter-spacing: 0.01em; }
+  .nav-cta {
+    font-size: 0.8rem; font-weight: 500;
+    background: var(--teal); color: white;
+    border: none; border-radius: 6px;
+    padding: 8px 16px; cursor: pointer;
+    transition: background 0.2s;
+    text-decoration: none;
+  }
+  .nav-cta:hover { background: var(--teal-dark); }
+
+  /* HERO */
+  .hero {
+    max-width: 720px; margin: 0 auto;
+    padding: 5rem 2rem 4rem;
+    text-align: center;
+    animation: fadeUp 0.7s ease both;
+  }
+  .hero-eyebrow {
+    display: inline-block;
+    font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--teal); background: var(--teal-light);
+    padding: 5px 14px; border-radius: 20px;
+    margin-bottom: 1.5rem;
+  }
+  .hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    line-height: 1.15;
+    color: var(--dark);
+    margin-bottom: 1.25rem;
+    letter-spacing: -0.01em;
+  }
+  .hero h1 em { color: var(--teal); font-style: italic; }
+  .hero p {
+    font-size: 1.05rem; font-weight: 300;
+    color: var(--mid); max-width: 560px; margin: 0 auto 2.5rem;
+    line-height: 1.75;
+  }
+
+  /* OPT-IN FORM */
+  .opt-in-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2rem;
+    max-width: 480px; margin: 0 auto 1rem;
+    animation: fadeUp 0.8s 0.15s ease both;
+  }
+  .opt-in-card h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.2rem; color: var(--dark);
+    margin-bottom: 0.35rem;
+  }
+  .opt-in-card p { font-size: 0.85rem; color: var(--muted); margin-bottom: 1.25rem; }
+  .field-row { display: flex; flex-direction: column; gap: 10px; margin-bottom: 12px; }
+  .field-row input {
+    width: 100%; padding: 11px 14px;
+    border: 1px solid var(--border); border-radius: 8px;
+    font-family: 'DM Sans', sans-serif; font-size: 0.9rem; color: var(--dark);
+    background: var(--bg);
+    transition: border-color 0.15s, box-shadow 0.15s;
+    outline: none;
+  }
+  .field-row input:focus { border-color: var(--teal); box-shadow: 0 0 0 3px rgba(15,110,86,0.1); }
+  .submit-btn {
+    width: 100%; padding: 13px;
+    background: var(--teal); color: white;
+    border: none; border-radius: 8px;
+    font-family: 'DM Sans', sans-serif; font-size: 0.95rem; font-weight: 500;
+    cursor: pointer; transition: background 0.2s, transform 0.1s;
+    letter-spacing: 0.01em;
+  }
+  .submit-btn:hover { background: var(--teal-dark); }
+  .submit-btn:active { transform: scale(0.99); }
+  .privacy-note { font-size: 0.75rem; color: var(--muted); text-align: center; margin-top: 10px; }
+
+  /* SUCCESS STATE */
+  .success-msg {
+    display: none; text-align: center; padding: 1.5rem 0;
+    animation: fadeUp 0.4s ease both;
+  }
+  .success-icon {
+    width: 48px; height: 48px; border-radius: 50%;
+    background: var(--teal-light); margin: 0 auto 1rem;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .success-icon svg { width: 22px; height: 22px; }
+  .success-msg h3 { font-family: 'DM Serif Display', serif; font-size: 1.3rem; margin-bottom: 0.4rem; }
+  .success-msg p { font-size: 0.9rem; color: var(--muted); }
+
+  /* DIVIDER */
+  .section-divider { border: none; border-top: 1px solid var(--border); margin: 0; }
+
+  /* SECTIONS */
+  section { padding: 5rem 2rem; }
+  .section-inner { max-width: 760px; margin: 0 auto; }
+  .section-label {
+    font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--teal); margin-bottom: 0.75rem;
+  }
+  .section-h { font-family: 'DM Serif Display', serif; font-size: clamp(1.6rem, 3vw, 2.2rem); margin-bottom: 1rem; line-height: 1.25; }
+  .section-body { font-size: 1rem; font-weight: 300; color: var(--mid); line-height: 1.75; max-width: 600px; }
+
+  /* PILLAR CARDS */
+  .pillar-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 2rem; }
+  .pillar-card {
+    border: 1px solid var(--border); border-radius: 12px;
+    padding: 1.25rem;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .pillar-card:hover { border-color: rgba(15,110,86,0.3); transform: translateY(-2px); }
+  .pillar-tag {
+    font-size: 0.7rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 3px 10px; border-radius: 10px; display: inline-block; margin-bottom: 0.6rem;
+  }
+  .pillar-card h4 { font-size: 0.95rem; font-weight: 500; margin-bottom: 0.4rem; }
+  .pillar-card p { font-size: 0.85rem; color: var(--muted); line-height: 1.55; }
+
+  /* AUDIENCE */
+  .audience-list { list-style: none; margin-top: 1.75rem; display: flex; flex-direction: column; gap: 10px; }
+  .audience-list li {
+    display: flex; gap: 12px; align-items: flex-start;
+    padding: 1rem 1.25rem;
+    background: var(--white); border: 1px solid var(--border); border-radius: 10px;
+  }
+  .check-circle {
+    width: 20px; height: 20px; border-radius: 50%;
+    background: var(--teal-light); flex-shrink: 0; margin-top: 1px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .check-circle svg { width: 10px; height: 10px; }
+  .audience-list li span { font-size: 0.95rem; color: var(--mid); line-height: 1.6; }
+
+  /* FAQ */
+  .faq-list { margin-top: 1.75rem; display: flex; flex-direction: column; gap: 0; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+  .faq-item { border-bottom: 1px solid var(--border); }
+  .faq-item:last-child { border-bottom: none; }
+  .faq-q {
+    width: 100%; text-align: left; background: none; border: none; cursor: pointer;
+    padding: 1.1rem 1.25rem; display: flex; justify-content: space-between; align-items: center; gap: 12px;
+    font-family: 'DM Sans', sans-serif; font-size: 0.95rem; font-weight: 500; color: var(--dark);
+    transition: background 0.15s;
+  }
+  .faq-q:hover { background: var(--bg); }
+  .faq-icon { flex-shrink: 0; width: 18px; height: 18px; transition: transform 0.25s; color: var(--muted); }
+  .faq-a { display: none; padding: 0 1.25rem 1.1rem; font-size: 0.9rem; color: var(--mid); line-height: 1.7; font-weight: 300; }
+  .faq-item.open .faq-a { display: block; }
+  .faq-item.open .faq-icon { transform: rotate(45deg); }
+
+  /* ABOUT */
+  .about-section { background: var(--teal-dark); color: white; }
+  .about-section .section-label { color: rgba(255,255,255,0.5); }
+  .about-section .section-h { color: white; }
+  .about-section .section-body { color: rgba(255,255,255,0.75); max-width: 580px; }
+  .about-inner { max-width: 760px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+
+  /* BOTTOM CTA */
+  .bottom-cta { background: var(--white); text-align: center; border-top: 1px solid var(--border); }
+  .bottom-cta .section-h { max-width: 520px; margin: 0 auto 0.75rem; }
+  .bottom-cta .section-body { max-width: 440px; margin: 0 auto 2rem; }
+
+  /* FOOTER */
+  footer {
+    background: var(--dark); color: rgba(255,255,255,0.4);
+    text-align: center; padding: 1.5rem 2rem;
+    font-size: 0.78rem;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 640px) {
+    .pillar-grid { grid-template-columns: 1fr; }
+    .about-inner { grid-template-columns: 1fr; gap: 2rem; }
+    .hero { padding: 3rem 1.25rem 2.5rem; }
+    section { padding: 3.5rem 1.25rem; }
+    nav { padding: 0 1.25rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-brand">Wealth Architect</span>
+  <a href="#get-checklist" class="nav-cta">Get the free checklist</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" style="padding-bottom: 0;">
+  <span class="hero-eyebrow">Free checklist — instant download</span>
+  <h1>Are your tax, estate, and insurance plans <em>actually</em> working together?</h1>
+  <p>Most people have an advisor for each one. Very few have someone making sure all three connect. This free checklist shows you exactly where the gaps are — in plain language, in under 5 minutes.</p>
+</section>
+
+<!-- OPT-IN FORM -->
+<div id="get-checklist" style="padding: 2rem 2rem 5rem; max-width: 720px; margin: 0 auto;">
+  <div class="opt-in-card" id="form-card">
+    <h3>Get instant access</h3>
+    <p>Enter your details below to download your free copy.</p>
+    <div class="field-row">
+      <input type="text" id="fname" placeholder="First name" autocomplete="given-name" />
+      <input type="email" id="email" placeholder="Email address" autocomplete="email" />
+    </div>
+    <button class="submit-btn" onclick="handleSubmit()">Send me the checklist</button>
+    <p class="privacy-note">No spam. Unsubscribe anytime. Your information stays private.</p>
+  </div>
+  <div class="success-msg" id="success-msg">
+    <div class="success-icon">
+      <svg viewBox="0 0 22 22" fill="none"><path d="M4 11l5 5L18 6" stroke="#0F6E56" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <h3>You're all set!</h3>
+    <p>Check your inbox — your checklist is on its way.<br>While you wait, keep reading to see what's inside.</p>
+  </div>
+</div>
+
+<hr class="section-divider">
+
+<!-- WHAT'S INSIDE -->
+<section>
+  <div class="section-inner reveal">
+    <p class="section-label">What you'll find inside</p>
+    <h2 class="section-h">10 things your advisors should be doing together — and probably aren't</h2>
+    <p class="section-body">This isn't a generic financial checklist. It's built around one idea: that tax, estate, and insurance decisions don't live in separate boxes — and when they're not coordinated, it costs you money, protection, and peace of mind.</p>
+    <div class="pillar-grid">
+      <div class="pillar-card">
+        <span class="pillar-tag" style="background: var(--teal-light); color: var(--teal-dark);">Tax strategy</span>
+        <h4>Are you planning ahead?</h4>
+        <p>3 items on retirement structuring, future planning, and business tax efficiency.</p>
+      </div>
+      <div class="pillar-card">
+        <span class="pillar-tag" style="background: var(--purple-light); color: var(--purple);">Estate planning</span>
+        <h4>Does your plan reflect today?</h4>
+        <p>3 items on wills, beneficiary designations, and powers of attorney.</p>
+      </div>
+      <div class="pillar-card">
+        <span class="pillar-tag" style="background: var(--amber-light); color: var(--amber);">Insurance</span>
+        <h4>Is your coverage right-sized?</h4>
+        <p>4 items on life, disability, and how insurance connects to your estate plan.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- WHO IT'S FOR -->
+<section>
+  <div class="section-inner reveal">
+    <p class="section-label">Who this is for</p>
+    <h2 class="section-h">You've worked hard to build something. This checklist helps you protect it.</h2>
+    <ul class="audience-list">
+      <li>
+        <div class="check-circle"><svg viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3L9 1" stroke="#0F6E56" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <span>Business owners who want to make sure their company and personal finances aren't working against each other</span>
+      </li>
+      <li>
+        <div class="check-circle"><svg viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3L9 1" stroke="#0F6E56" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <span>Families building or transferring wealth who want to know their loved ones are truly taken care of</span>
+      </li>
+      <li>
+        <div class="check-circle"><svg viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3L9 1" stroke="#0F6E56" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <span>Anyone approaching or in retirement who wants clarity — not more complexity — about where they stand</span>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- FAQ -->
+<section>
+  <div class="section-inner reveal">
+    <p class="section-label">Common questions</p>
+    <h2 class="section-h">A few things people ask</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          I already have a CPA and an estate attorney. Do I need this?
+          <svg class="faq-icon" viewBox="0 0 18 18" fill="none"><path d="M9 3v12M3 9h12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </button>
+        <div class="faq-a">Possibly more than most. Having separate advisors for each area is common — but it also means no one is watching how the pieces interact. This checklist helps you spot exactly that.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Is this going to try to sell me something?
+          <svg class="faq-icon" viewBox="0 0 18 18" fill="none"><path d="M9 3v12M3 9h12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </button>
+        <div class="faq-a">The checklist is genuinely free and genuinely useful on its own. If after reading it you want to talk through what you found, that conversation is always available — but there's no pressure, ever.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          How long does it take?
+          <svg class="faq-icon" viewBox="0 0 18 18" fill="none"><path d="M9 3v12M3 9h12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </button>
+        <div class="faq-a">About 5 minutes to read through. The thinking it sparks might take a little longer — and that's the point.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          What happens after I sign up?
+          <svg class="faq-icon" viewBox="0 0 18 18" fill="none"><path d="M9 3v12M3 9h12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </button>
+        <div class="faq-a">You'll receive the checklist immediately by email. Over the following two weeks, you'll get a short series of plain-language emails diving deeper into the most commonly missed items. No daily emails, no sales pressure.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-section">
+  <div class="about-inner">
+    <div class="reveal">
+      <p class="section-label">About Wealth Architect</p>
+      <h2 class="section-h">Built around the connections most advisors miss</h2>
+      <p class="section-body">Wealth Architect is an independent advisory firm specializing in tax, estate, and insurance strategy — together. Unlike advisors who see only one piece of your financial life, we're designed around the whole picture. Plain language, no jargon, no silos.</p>
+    </div>
+    <div class="reveal" style="transition-delay: 0.15s;">
+      <div style="display: flex; flex-direction: column; gap: 14px;">
+        <div style="background: rgba(255,255,255,0.08); border-radius: 10px; padding: 1rem 1.25rem;">
+          <p style="font-size: 0.72rem; font-weight: 500; letter-spacing: 0.09em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 4px;">Tax strategy</p>
+          <p style="font-size: 0.9rem; color: rgba(255,255,255,0.8); font-weight: 300;">Planning that minimizes what you owe and keeps more of what you've built.</p>
+        </div>
+        <div style="background: rgba(255,255,255,0.08); border-radius: 10px; padding: 1rem 1.25rem;">
+          <p style="font-size: 0.72rem; font-weight: 500; letter-spacing: 0.09em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 4px;">Estate planning</p>
+          <p style="font-size: 0.9rem; color: rgba(255,255,255,0.8); font-weight: 300;">Protecting your legacy and making sure your wishes are actually carried out.</p>
+        </div>
+        <div style="background: rgba(255,255,255,0.08); border-radius: 10px; padding: 1rem 1.25rem;">
+          <p style="font-size: 0.72rem; font-weight: 500; letter-spacing: 0.09em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 4px;">Insurance</p>
+          <p style="font-size: 0.9rem; color: rgba(255,255,255,0.8); font-weight: 300;">The right coverage, integrated with your overall financial plan.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOTTOM CTA -->
+<section class="bottom-cta">
+  <div class="reveal">
+    <h2 class="section-h">Ready to see where your gaps are?</h2>
+    <p class="section-body">Download the free checklist — no obligation, no fluff. Just a clear picture of where you stand.</p>
+    <div class="opt-in-card" id="form-card-2" style="text-align: left;">
+      <div class="field-row">
+        <input type="text" id="fname2" placeholder="First name" autocomplete="given-name" />
+        <input type="email" id="email2" placeholder="Email address" autocomplete="email" />
+      </div>
+      <button class="submit-btn" onclick="handleSubmit2()">Send me the checklist</button>
+      <p class="privacy-note">No spam. Unsubscribe anytime.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 Wealth Architect &nbsp;·&nbsp; Tax · Estate · Insurance — Connected &nbsp;·&nbsp; <a href="#" style="color: rgba(255,255,255,0.4);">Privacy Policy</a></p>
+</footer>
+
+<script>
+  function handleSubmit() {
+    const name = document.getElementById('fname').value.trim();
+    const email = document.getElementById('email').value.trim();
+    if (!name || !email) { alert('Please fill in both fields.'); return; }
+    document.getElementById('form-card').style.display = 'none';
+    const msg = document.getElementById('success-msg');
+    msg.style.display = 'block';
+    // TODO: connect to your email platform (Mailchimp, ConvertKit, etc.) here
+    // Example: fetch('/api/subscribe', { method: 'POST', body: JSON.stringify({ name, email }) })
+  }
+
+  function handleSubmit2() {
+    const name = document.getElementById('fname2').value.trim();
+    const email = document.getElementById('email2').value.trim();
+    if (!name || !email) { alert('Please fill in both fields.'); return; }
+    document.getElementById('form-card-2').innerHTML = '<div style="text-align:center;padding:1.5rem 0;"><p style="color:var(--teal);font-weight:500;">You\'re all set — check your inbox!</p></div>';
+  }
+
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!wasOpen) item.classList.add('open');
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
